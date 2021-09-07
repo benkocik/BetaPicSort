@@ -20,7 +20,7 @@ def main():
 
 
     # Unmount the google drive folder
-    os.system("fusermount -u " + histPath)
+    os.system("sudo fusermount -u " + histPath)
 
 
 
