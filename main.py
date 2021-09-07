@@ -7,8 +7,8 @@ import time
 
 def main():
     # Mount the google drive folder
-    os.system("sudo rclone mount --allow-other --daemon picsort: " + histPath)
     histPath = os.path.join("/mnt", "HistDrive")
+    os.system("sudo rclone mount --allow-other --daemon picsort: " + histPath)
 
     # Sort through pictures
     dumpPath = os.path.join(histPath, "ToSort")
