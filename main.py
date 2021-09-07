@@ -9,7 +9,6 @@ def main():
     # Mount the google drive folder
     histPath = os.path.join("/mnt", "HistDrive")
     os.system("sudo rclone mount --allow-other --daemon picsort: " + histPath)
-    time.sleep(30)  # Wait 30 seconds for drive to connect
 
     # Sort through pictures
     dumpPath = os.path.join(histPath, "ToSort")
