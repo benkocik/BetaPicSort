@@ -14,7 +14,7 @@ def main():
     # Sort through pictures
     dumpPath = os.path.join(histPath, "ToSort")
     for pic in os.listdir(dumpPath):
-        picDate = time.ctime(os.path.getmtime(pic))
+        picDate = time.ctime(os.path.getmtime(os.path.join(dumpPath, pic)))
         print(picDate)
         #for f in os.walk(histPath):
 
