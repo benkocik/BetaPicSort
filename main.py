@@ -29,7 +29,7 @@ def main():
                         if os.path.isdir(os.path.join(os.path.join(histPath, f), j)):
                             # Check specific year folder
                             if j == picYear:
-                                subprocess.call("sudo mv " + pic + " " + os.path.join(os.path.join(histPath, f), j))   # Move file into folder
+                                subprocess.call("sudo mv " + os.path.join(dumpPath, pic) + " " + os.path.join(os.path.join(histPath, f), j))   # Move file into folder
 
     # Unmount the google drive folder
     os.system("sudo fusermount -u " + histPath)
