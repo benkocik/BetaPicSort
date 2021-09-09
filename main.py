@@ -21,12 +21,12 @@ def main():
         print(picYear)
         for f in os.listdir(histPath):
             # Confirm it is a directory
+            print(f)
+            print(f[:3])
+            print(picYear[:3])
             if os.path.isdir(f):
                 # Check decade folder
-                if str(f[:3]) == str(picYear[:3]):
-                    print(f)
-                    print(f[:3])
-                    print(picYear[:3])
+                if f[:3] == picYear[:3]:
                     for j in os.listdir(os.path.join(histPath, f)):
                         print(j)
                         # Confirm it is a directory
