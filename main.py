@@ -3,13 +3,14 @@
 
 # Imports
 import os
+import subprocess
 import time
 
 def main():
     # Mount the google drive folder
     histPath = os.path.join("/mnt", "HistDrive")
     os.system("sudo rclone mount --allow-other --daemon picsort: " + histPath)
-    time.sleep(5)
+    time.sleep(5)   # Wait 5 seconds for drive to connect
 
     # Sort through pictures
     dumpPath = os.path.join(histPath, "ToSort")
@@ -27,7 +28,7 @@ def main():
                         if os.path.isdir(j):
                             # Check specific year folder
                             if j == picYear:
-                                os.system("mv " + pic + " " + os.path.join(os.path.join(histPath, f), j))   # Move file into folder
+                                subprocess.call("mv " + pic + " " + os.path.join(os.path.join(histPath, f), j))   # Move file into folder
 
     # Unmount the google drive folder
     os.system("sudo fusermount -u " + histPath)
