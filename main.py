@@ -20,19 +20,16 @@ def main():
         picYear = picDate.split()[4]    # String of year of picture
         print(picYear)
         for f in os.listdir(histPath):
-            # Confirm it is a directory
-            print(f)
-            print(f[:3])
-            print(picYear[:3])
-            print(f[:3] == picYear[:3])
-            # Check decade folder
-            if f[:3] == picYear[:3]:
-                print("here")       
-                for j in os.listdir(os.path.join(histPath, f)):
-                    print(j)
-                    # Check specific year folder
-                    if j == picYear:
-                        subprocess.call("mv " + pic + " " + os.path.join(os.path.join(histPath, f), j))   # Move file into folder
+            # Confirm is directory
+            if os.path.isdir(os.path.join(histPath, f)):
+                # Check decade folder
+                if f[:3] == picYear[:3]:    
+                    for j in os.listdir(os.path.join(histPath, f)):
+                        # Confirm is direcotry
+                        if os.path.isdir(os.path.join(os.path.join(histPath, f), j)):
+                            # Check specific year folder
+                            if j == picYear:
+                                subprocess.call("sudo mv " + pic + " " + os.path.join(os.path.join(histPath, f), j))   # Move file into folder
 
     # Unmount the google drive folder
     os.system("sudo fusermount -u " + histPath)
