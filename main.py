@@ -18,11 +18,14 @@ def main():
         picDate = time.ctime(os.path.getmtime(os.path.join(dumpPath, pic)))
         picMonth = picDate.split()[1]   # May be used later to sort by Fall/Spring term
         picYear = picDate.split()[4]    # String of year of picture
+        print(picYear)
         for f in os.listdir(histPath):
             # Confirm it is a directory
             if os.path.isdir(f):
                 # Check decade folder
                 if f[:3] == picYear[:3]:
+                    print(f)
+                    print(f[:3])
                     for j in os.listdir(os.path.join(histPath, f)):
                         # Confirm it is a directory
                         if os.path.isdir(j):
