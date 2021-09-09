@@ -17,13 +17,17 @@ def main():
         picDate = time.ctime(os.path.getmtime(os.path.join(dumpPath, pic)))
         picMonth = picDate.split()[1]   # May be used later to sort by Fall/Spring term
         picYear = picDate.split()[4]    # String of year of picture
-        for f in os.walk(histPath):
-            # Check decade folder
-            if f[:3] == picYear[:3]:
-                for j in os.walk(os.path.join(histPath, f)):
-                    # Check specific year folder
-                    if j == picYear:
-                        os.system("mv " + pic + " " + os.path.join(os.path.join(histPath, f), j))   # Move file into folder
+        for f in os.listdir(histPath):
+            # Confirm it is a directory
+            if os.path.isdir(f):
+                # Check decade folder
+                if f[:3] == picYear[:3]:
+                    for j in os.listdir(os.path.join(histPath, f)):
+                        # Confirm it is a directory
+                        if os.path.isdir(j):
+                            # Check specific year folder
+                            if j == picYear:
+                                os.system("mv " + pic + " " + os.path.join(os.path.join(histPath, f), j))   # Move file into folder
 
     # Unmount the google drive folder
     os.system("sudo fusermount -u " + histPath)
