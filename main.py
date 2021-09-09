@@ -3,7 +3,6 @@
 
 # Imports
 import os
-import subprocess
 import time
 
 def main():
@@ -18,7 +17,6 @@ def main():
         picDate = time.ctime(os.path.getmtime(os.path.join(dumpPath, pic)))
         picMonth = picDate.split()[1]   # May be used later to sort by Fall/Spring term
         picYear = picDate.split()[4]    # String of year of picture
-        print(picYear)
         for f in os.listdir(histPath):
             # Confirm is directory
             if os.path.isdir(os.path.join(histPath, f)):
@@ -29,7 +27,7 @@ def main():
                         if os.path.isdir(os.path.join(os.path.join(histPath, f), j)):
                             # Check specific year folder
                             if j == picYear:
-                                subprocess.call("sudo mv " + os.path.join(dumpPath, pic) + " " + os.path.join(os.path.join(histPath, f), j))   # Move file into folder
+                                os.system("sudo mv " + os.path.join(dumpPath, pic) + " " + os.path.join(os.path.join(histPath, f), j))   # Move file into folder
 
     # Unmount the google drive folder
     os.system("sudo fusermount -u " + histPath)
